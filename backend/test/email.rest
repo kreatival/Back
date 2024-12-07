@@ -1,0 +1,11 @@
+// Email -----------------------------------------------------
+
+###
+POST http://localhost:3000/api/email/send-message-email/
+Content-Type: application/json
+
+{
+    "to": "martinchoo_13@hotmail.com",
+    "subject": "Prueba",
+    "text": "Esto es texto de prueba" 
+}

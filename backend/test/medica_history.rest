@@ -1,0 +1,67 @@
+### Retrieve all medical histories
+GET http://localhost:3000/api/medical-history
+Content-Type: application/json
+
+###
+
+### Retrieve a medical history by ID
+GET http://localhost:3000/api/medical-history/1
+Content-Type: application/json
+
+###
+
+### Create a new medical history
+POST http://localhost:3000/api/medical-history
+Content-Type: application/json
+
+{
+    "patient_id": 1,
+    "cardiac_issues": true,
+    "diabetes": false,
+    "hepatitis": false,
+    "drug_consumption": true,
+    "abnormal_blood_pressure": false,
+    "hiv": false,
+    "asthma": true,
+    "anemia": false,
+    "epilepsy": false,
+    "pregnancy": false,
+    "medication_consumption": true,
+    "medications_notes": "Patient is on daily medication for high blood pressure.",
+    "allergies": true,
+    "allergies_notes": "Allergic to penicillin.",
+    "notes": "Patient has a history of asthma."
+}
+
+###
+
+### Update a medical history by ID
+PUT http://localhost:3000/api/medical-history/1
+Content-Type: application/json
+
+{
+    "patient_id": 1,
+    "cardiac_issues": true,
+    "diabetes": true,
+    "hepatitis": false,
+    "drug_consumption": false,
+    "abnormal_blood_pressure": true,
+    "hiv": false,
+    "asthma": true,
+    "anemia": false,
+    "epilepsy": false,
+    "pregnancy": false,
+    "medication_consumption": true,
+    "medications_notes": "Updated medication for high blood pressure.",
+    "allergies": true,
+    "allergies_notes": "Updated allergy to penicillin.",
+    "notes": "Updated medical history."
+}
+
+###
+
+### Delete a medical history by ID
+DELETE http://localhost:3000/api/medical-history/1
+Content-Type: application/json
+
+###

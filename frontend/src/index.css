@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  .react-datepicker__view-calendar-icon input {
+    padding: 8px;
+  }
+}
+.react-datepicker__day--selected {
+  background-color: #006af5;
+}
+
+/* FullCalendar */
+
+.demo-app {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  font-size: 14px;
+  /* padding: 8px 8px 12px 8px; */
+  border-right: 2px solid rgba(26, 56, 96, 0.1);
+}
+
+.demo-app-sidebar {
+  width: 300px;
+  line-height: 1.5;
+}
+
+.demo-app-main {
+  /* padding: 3em 0; */
+  flex-grow: 1;
+  background-color: white;
+}
+
+.fc { /* the calendar root */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Indicador visual del dia actual */
+.fc-day-today {
+  background-color: transparent !important; /* Ajusta el color a tu preferencia */
+}
+
+/* CALENDAR HEADER */
+
+.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr .fc-toolbar-title{
+  width: 100%;
+  color: #000000;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.fc-toolbar-title{
+  color: #000000;
+}
+
+.fc-col-header-cell-cushion{
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.fc-toolbar-chunk .fc-button-group{
+  gap: 6px;
+}
+
+.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr .fc-toolbar-chunk button {
+  color: #005FDB;
+  background-color: white;
+  border-color: #006AF5;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.fc .fc-button:focus {
+  box-shadow: none;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus, .fc .fc-button-primary:not(:disabled):active:focus {
+  box-shadow: none;
+}
+
+.fc-col-header {
+  background: linear-gradient(180deg, #FAFDFF 0%, #DBE5FF 100%);
+  ;
+}
+.fc-timegrid-axis{
+  background-color: white;
+}
+
+/* modifica el estilo del evento del calendario */
+.fc-v-event{
+  border-radius: 5px;
+  margin: 2px;
+  padding: 2px;
+  background-color: #F5EDD9;
+  border-color: #834E00;
+}
+
+.fc-event-main{
+  display: inline-flex;
+  width: 100%;
+}
+
+/* aumenta la altura de las celdas del calendario */
+.fc-timegrid-slot-label {
+  height: 45px;
+  line-height: 45px; 
+}
+
+/* CUSTOM SCROLLBAR */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Fondo del track de la barra de desplazamiento */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c4cbd3; /* Color de la barra de desplazamiento */
+  border-radius: 8px; /* Borde redondeado de la barra */
+  border: 2px solid transparent; /* Espacio alrededor de la barra */
+  background-clip: content-box; /* Para que el color del borde no cubra la barra */
+}
+
+/* select */ 
+
+.ant-picker-content thead th {
+  padding-bottom: 8px !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+}
+
+:where(.css-dev-only-do-not-override-1uq9j6g).ant-picker-calendar-mini .ant-picker-content {
+  height: 234px;
+}
+
+@media (max-width: 953px) {
+  .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
+    width: 100%;
+    font-size: 19px;
+  }
+
+  #root
+    > div
+    > main.p-3.mt-\[80px\].lg\:hidden.w-
+    > div
+    > div
+    > div.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr
+    > div:nth-child(2)
+    > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr .fc-toolbar-chunk button {
+    margin: 1px;
+  }
+
+  .fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .hide-on-small-screen {
+    display: none !important;
+  }
+}
+
+@media (max-width: 555px) {
+  .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .custom-event span {
+    width: 100%;
+    font-size: 12px;
+  }
+}

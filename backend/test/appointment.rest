@@ -1,0 +1,45 @@
+// Appointment routes --------------------------------------------------------
+
+###
+POST http://localhost:3000/api/appointments
+Content-Type: application/json
+
+{
+    "patient_id": 1,
+    "dentist_id": 4,
+    "reason": "Routine check-up",
+    "date": "2024-08-15",
+    "time": "07:30"
+}
+
+###
+GET http://localhost:3000/api/appointments
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/api/appointments/1
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/api/appointments/3
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/api/appointments/2
+Content-Type: application/json
+
+{
+    "patient_id": 1,
+    "dentist_id": 3,
+    "reason": "Tooth extraction",
+    "date": "2024-08-20"
+}
+
+###
+PATCH http://localhost:3000/api/appointments/2
+Content-Type: application/json
+
+{
+    "reason": "Dental filling"
+}

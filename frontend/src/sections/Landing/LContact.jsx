@@ -1,0 +1,150 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { landingContactSchema } from "../../validations/landingContact";
+import { toast, Toaster } from "react-hot-toast";
+import { createMessage } from "../../api/support/apiSupport";
+import Screen from "../../assets/Screen.jpg";
+
+export default function LContact() {
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(landingContactSchema),
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      // enviar data a la API
+      const response = await createMessage(data);
+      console.log(response);
+      if (response.status === 201) {
+        toast.success("Mensaje enviado correctamente");
+        reset();
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al enviar el mensaje");
+      return;
+    }
+  };
+
+  return (
+    <div className="bg-[#DBE5FF]">
+      <div
+        className="flex justify-center sm:py-[57px] py-[26px] sm:px-0 px-4 sm:rounded-tl-[20px] sm:rounded-tr-[20px]"
+        style={{
+          backgroundImage: `url(${Screen})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <form
+          className="card__contact max-w-[568px] w-full flex flex-col rounded-lg shadow-custom-lg pt-11 pb-6 px-6 gap-4 bg-[#143D72] bg-opacity-65"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h2 className="text-start text-[#E6F7FF] font-medium text-[32px]">
+            Contacto
+          </h2>
+          <div className="flex flex-col gap-6">
+            <div className="flex gap-6 w-full sm:flex-row flex-col">
+              <div className="flex flex-col gap-2.5 sm:w-2/4">
+                <label className="text-[#E6F7FF] font-semibold text-lg">
+                  Nombre
+                </label>
+                <input
+                  className="px-2.5 py-2 rounded border border-[#1C304A] border-opacity-50 outline-none"
+                  type="text"
+                  placeholder="Ingrese su nombre"
+                  {...register("first_name")}
+                />
+                {errors.first_name && (
+                  <span className="text-error text-base font-medium">
+                    {errors.first_name.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col gap-2.5 sm:w-2/4">
+                <label className="text-[#E6F7FF] font-semibold text-lg">
+                  Apellido (opcional)
+                </label>
+                <input
+                  className="px-2.5 py-2 rounded border border-[#1C304A] border-opacity-50 outline-none"
+                  type="text"
+                  placeholder="Ingrese su apellido"
+                  {...register("last_name")}
+                />
+                {errors.last_name && (
+                  <span className="text-error text-base font-medium">
+                    {errors.last_name.message}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col gap-2.5">
+              <label className="text-[#E6F7FF] font-semibold text-lg">
+                Correo electrónico
+              </label>
+              <input
+                className="px-2.5 py-2 rounded border border-[#1C304A] border-opacity-50 outline-none"
+                type="email"
+                placeholder="Ingrese su correo electrónico"
+                {...register("email")}
+              />
+              {errors.email && (
+                <span className="text-error text-base font-medium">
+                  {errors.email.message}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-col gap-2.5">
+              <label className="text-[#E6F7FF] font-semibold text-lg">
+                Teléfono
+              </label>
+              <input
+                className="px-2.5 py-2 rounded border border-[#1C304A] border-opacity-50 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                type="text"
+                placeholder="Ej: 11 4289-5295"
+                maxLength="10"
+                {...register("phone_number")}
+              />
+              {errors.phone_number && (
+                <span className="text-error text-base font-medium">
+                  {errors.phone_number.message}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-col gap-2.5">
+              <label className="text-[#E6F7FF] font-semibold text-lg">
+                Mensaje (opcional)
+              </label>
+              <textarea
+                className="px-2.5 py-2 rounded border border-[#1C304A] border-opacity-50 max-h-[82px] h-full outline-none"
+                placeholder="Escriba un mensaje..."
+                rows="4"
+                maxLength={250}
+                {...register("issue_detail")}
+              />
+              {errors.issue_detail && (
+                <span className="text-error text-base font-medium">
+                  {errors.issue_detail.message}
+                </span>
+              )}
+            </div>
+            <div className="w-full">
+              <button
+                className="bg-[#006AF5] text-white w-full px-[14px] py-3 rounded text-lg font-medium hover:opacity-70 transition-all"
+                type="submit"
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <Toaster position="top-right" />
+    </div>
+  );
+}

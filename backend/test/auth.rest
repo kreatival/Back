@@ -1,0 +1,36 @@
+//  Auth routes  --------------------------------------------------------
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "correo1@asd.com",
+    "contrasena": "123"
+}
+
+###
+POST http://localhost:3000/api/auth/change-password/10
+Content-Type: application/json
+
+{
+    "old_password": "123",
+    "new_password": "12345",
+    "confirm_password": "12345"
+}
+
+
+###
+POST http://localhost:3000/api/auth/forgot-password/
+Content-Type: application/json
+
+{
+    "email": "correo1@asd.com"
+}
+
+###
+POST http://localhost:3000/api/auth/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMDA2NjU3MSwiZXhwIjoxNzIwMDcwMTcxfQ.Xpe2NhCVxFs27zKOSftRP7RjvT_1Euu9j7-8kkok61s
+Content-Type: application/json
+
+{
+    "new_password": "123"
+}
